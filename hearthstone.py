@@ -67,9 +67,9 @@ class MinionCard(Card):
         Pirate = 6
         Totem = 7
         
-    def __init__(self, mana_cost, name, attack, health, race=Race.General, rarity=None, flavour_text=None):
+    def __init__(self, mana_cost, name, attack, health, race=Race.General, class_=Class.Any, rarity=None, flavour_text=None, is_golden=False):
         """We're using Python for speed of development."""
-        super().__init__(mana_cost, name, rarity, flavour_text)
+        super().__init__(mana_cost, name, class_, rarity, flavour_text)
         self.attack = attack
         self.health = health
         self.race = race
