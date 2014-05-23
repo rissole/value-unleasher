@@ -5,10 +5,10 @@ class Character(object):
         self._card_proto = card_proto
 
     def get_health(self):
-        raise NotImplemented("Character must be either a Minion or a Hero")
+        raise NotImplementedError("Character must be either a Minion or a Hero")
 
     def get_attack(self):
-        raise NotImplemented("Character must be either a Minion or a Hero")
+        raise NotImplementedError("Character must be either a Minion or a Hero")
 
     def get_card_prototype(self):
         return self._card_proto
