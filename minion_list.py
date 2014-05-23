@@ -79,4 +79,5 @@ class MinionList(object):
     
     def push_left(self, minion):
         self.insert(0, minion)
-               
+
+
