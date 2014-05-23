@@ -1,13 +1,14 @@
 class MinionList(object):
     """LinkedList of minions, represents a side of the field"""
+
     def __init__(self):
         self._head = None
         self._tail = None
         self._size = 0
-        
+
     def __len__(self):
         return self._size
-    
+
     def __getitem__(self, position):
         current = self._head
         i = 0
@@ -17,19 +18,19 @@ class MinionList(object):
             current = current.get_right()
             i += 1
         return current
-        
+
     def __iter__(self):
         current = self._head
         while current != None:
             yield current
             current = current.get_right()
-            
+
     def __reversed__(self):
         current = self._tail
         while current != None:
             yield current
             current = current.get_left()
-        
+
     def insert(self, position, minion):
         if position > self._size or position < 0:
             raise IndexError()
@@ -51,7 +52,7 @@ class MinionList(object):
             if position == 0:
                 self._head = minion
         self._size += 1
-        
+
     def remove(self, minion):
         left = minion.get_left()
         right = minion.get_right()
@@ -67,16 +68,16 @@ class MinionList(object):
             self._tail = left
 
         self._size -= 1
-        
+
     def index(self, minion):
         for i, m in enumerate(self):
             if m == minion:
                 return i
         raise ValueError('Minion %s not found.' % (minion,))
-            
+
     def push_right(self, minion):
         self.insert(len(self), minion)
-    
+
     def push_left(self, minion):
         self.insert(0, minion)
 

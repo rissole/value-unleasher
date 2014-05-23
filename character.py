@@ -1,13 +1,14 @@
 class Character(object):
+    """Abstract class. Character must be either a Minion or a Hero"""
 
-    def __init__(self): 
-        raise NotImplemented("Um no.")
+    def __init__(self, card_proto): 
+        self._card_proto = card_proto
 
     def get_health(self):
-        raise NotImplemented("Um no.")
+        raise NotImplemented("Character must be either a Minion or a Hero")
 
     def get_attack(self):
-        raise NotImplemented("Um no.")
+        raise NotImplemented("Character must be either a Minion or a Hero")
 
     def get_card_prototype(self):
         return self._card_proto
@@ -15,13 +16,17 @@ class Character(object):
 
 class Minion(Character):
     """Represents a Minion on the Board"""
+
     def __init__(self, card_proto):
-        self._card_proto = card_proto
+        super().__init__(card_proto)
         self._left = None
         self._right = None
+        
+    def get_health(self):
+        return self._card_proto.get_health()
 
-    def get_card_prototype(self):
-        return self._card_proto
+    def get_attack(self):
+        return self._card_proto.get_attack()
 
     def get_left(self):
         """Get the Minion to the left"""
@@ -39,16 +44,16 @@ class Minion(Character):
 
 
 class Hero(Character):
+    """Hero represents the Player's character"""
 
-    def __init__(self, minion_card_proto=None):
-        # The proto needs to be of an actual minion.
-        self.card_proto = minion_card_proto
+    def __init__(self, card_proto=None):
+        super().__init__(card_proto)
 
     def get_health(self):
-        return self.card_proto.get_health()
+        return self._card_proto.get_health()
 
     def get_attack(self):
-        """TODO Weapons"""
+        #TODO Weapons
         return 0
 
 
