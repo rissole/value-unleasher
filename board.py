@@ -22,7 +22,7 @@ class Board(object):
     def get_sides(self):
         return iter((self.my_side, self.their_side))
 
-    def get_number_of_minions(self, side=None):
+    def get_number_of_minions(self):
         return len(self.my_side) + len(self.their_side)
 
 
